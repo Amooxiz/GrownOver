@@ -22,8 +22,12 @@ namespace GrownOver.Infrastructure.Services
         {
             User appUser = new User { UserName = UserName, Email = Email};
             appUser.HideOut = new HideOut();
+            appUser.nickName = UserName;
             appUser.Inventory = new Inventory();
-
+            appUser.Inventory.armor = new Armor();
+            appUser.Inventory.weapon = new Weapon();
+            appUser.Inventory.food = new Food();
+            appUser.Inventory.material = new Material();
             IdentityResult result = await _userManager.CreateAsync(appUser, Password);
 
 

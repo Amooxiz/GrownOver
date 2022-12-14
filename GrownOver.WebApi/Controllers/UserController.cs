@@ -17,8 +17,9 @@ namespace GrownOver.WebApi.Controllers
             _iUserService = userService;
         }
 
-        [EnableCors("Policy1")]
         [HttpPost]
+        //EnableCors("Policy1")]
+       // [DisableCors]
         public async Task<IdentityResult> Register([FromBody] RegisterUserRequest user)
         {
             return await _iUserService.RegisterUser(user.UserName, user.Email, user.Password);

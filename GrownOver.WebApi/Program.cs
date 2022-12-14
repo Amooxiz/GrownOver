@@ -16,9 +16,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Policy1",
         policy =>
         {
-            policy.WithOrigins("https://localhost:3000/")
+            policy
                                 .AllowAnyHeader()
-                                .AllowAnyMethod();
+                                .AllowAnyMethod().SetIsOriginAllowed(origin => true).AllowCredentials();
 
         });
 
@@ -38,10 +38,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("Policy1");
 
 app.UseAuthorization();
 
+app.UseCors("Policy1");
 app.MapControllers();
 
 app.Run();
