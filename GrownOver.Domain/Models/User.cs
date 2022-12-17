@@ -12,6 +12,7 @@ namespace GrownOver.Domain.Models
         public int? Charisma { get; set; }
         public int? Awereness { get; set; }
         public int? Experience { get; set; }
+        public int? PointsLeft { get; set; }
         public virtual HideOut? HideOut { get; set; }
         public virtual Inventory? Inventory { get; set; }
         public virtual ICollection<UserAchievement>? UserAchievements { get; set; }
