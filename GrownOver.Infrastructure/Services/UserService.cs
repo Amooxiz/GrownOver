@@ -54,7 +54,10 @@ namespace GrownOver.Infrastructure.Services
         {
             User appUser = await _userManager.FindByNameAsync(UserName);
 
-
+            if (appUser == null) 
+            {
+                throw new Exception("Nie ma uzytkownika o podanej nazwie");
+            }
             SignInResult result = await _signInManager.PasswordSignInAsync(appUser, Password, isPersistent, false);
 
             if (result.Succeeded)
