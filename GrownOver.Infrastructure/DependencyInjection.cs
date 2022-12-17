@@ -21,18 +21,19 @@ namespace GrownOver.Infrastructure
 
             services.AddDefaultIdentity<User>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedEmail = false;
                 options.Password.RequiredLength = 8;
             }).AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<GrownOverDbContext>();
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<User, GrownOverDbContext>(opt =>
-                {
-                    opt.IdentityResources["openid"].UserClaims.Add("role");
-                 opt.ApiResources.Single().UserClaims.Add("role");
-                });
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
+            //services.AddIdentityServer()
+            //    .AddApiAuthorization<User, GrownOverDbContext>(opt =>
+            //    {
+            //        opt.IdentityResources["openid"].UserClaims.Add("role");
+            //     opt.ApiResources.Single().UserClaims.Add("role");
+            //    });
+            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

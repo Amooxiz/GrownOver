@@ -13,7 +13,9 @@ namespace GrownOver.Domain.Models
         public int? Awereness { get; set; }
         public int? Experience { get; set; }
         public int? PointsLeft { get; set; }
+        public int? HideOutId { get; set; }
         public virtual HideOut? HideOut { get; set; }
+        public int? InventoryId { get; set; }
         public virtual Inventory? Inventory { get; set; }
         public virtual ICollection<UserAchievement>? UserAchievements { get; set; }
     }

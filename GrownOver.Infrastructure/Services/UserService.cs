@@ -81,28 +81,24 @@ namespace GrownOver.Infrastructure.Services
 
         public async Task<UserVM> GetUser(string id)
         {
-            var user = _userManager.FindByIdAsync(id);
-
-            if (user == null)
-            {
-                throw new NullReferenceException("user jest nullem");
-            }
+            var user = await _userManager.FindByIdAsync(id);
 
             UserVM userVM = new UserVM()
             {
-                Id = user.Result.Id,
-                UserName = user.Result.UserName,
-                Health = user.Result.Health,
-                Efficiency = user.Result.Efficiency,
-                Power = user.Result.Power,
-                Ingenuity = user.Result.Ingenuity,
-                Charisma = user.Result.Charisma,
-                Awereness = user.Result.Awereness,
-                Experience = user.Result.Experience,
-                HideOutId = user.Result?.HideOut?.Id,
-                InventoryId = user.Result?.Inventory?.Id,
-                PointsLeft = user.Result.PointsLeft
+                Id = user.Id,
+                UserName = user.UserName,
+                Health = user.Health,
+                Efficiency = user.Efficiency,
+                Power = user.Power,
+                Ingenuity = user.Ingenuity,
+                Charisma = user.Charisma,
+                Awereness = user.Awereness,
+                Experience = user.Experience,
+                HideOutId = user.HideOutId,
+                InventoryId = user.InventoryId,
+                PointsLeft = user.PointsLeft
             };
+
             return userVM;
         }
 
