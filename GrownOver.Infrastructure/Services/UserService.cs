@@ -35,6 +35,7 @@ namespace GrownOver.Infrastructure.Services
                 Charisma= 1,
                 Awereness = 1,
                 Experience = 0,
+                PointsLeft = 7,
             };
             appUser.HideOut = new HideOut();
             appUser.nickName = UserName;
