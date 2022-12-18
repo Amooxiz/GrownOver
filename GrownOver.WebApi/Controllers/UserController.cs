@@ -5,6 +5,8 @@ using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using Microsoft.AspNetCore.Cors;
 using GrownOver.Application.Interfaces;
 using GrownOver.Application.ViewModels;
+using Microsoft.AspNetCore.JsonPatch;
+using GrownOver.Domain.Models;
 
 namespace GrownOver.WebApi.Controllers
 {
@@ -37,9 +39,16 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpGet]
-        public void LogOut([FromBody] LoginUserRequest user)
+        public async void LogOut([FromBody] LoginUserRequest user)
         {
-            _iUserService.SignOut();
+           _iUserService.SignOut();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IdentityResult> Update([FromBody] JsonPatchDocument<User> patch,
+            [FromRoute] string id)
+        {
+            return await _iUserService.UpdateUser(patch, id);
         }
 
     }
