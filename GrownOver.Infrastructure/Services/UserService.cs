@@ -5,6 +5,7 @@ using GrownOver.Application.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using GrownOver.Application.ViewModels;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace GrownOver.Infrastructure.Services
 {
@@ -117,6 +118,16 @@ namespace GrownOver.Infrastructure.Services
             return userVM;
         }
 
+        public async Task<IdentityResult> UpdateUser(JsonPatchDocument<User> patch, string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            patch.ApplyTo(user);
+
+            var result = await _userManager.UpdateAsync(user);
+
+            return result;
+        }
 
     }
 }
