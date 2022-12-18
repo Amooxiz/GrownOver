@@ -24,7 +24,18 @@ namespace GrownOver.Infrastructure.Services
 
         public async Task<IdentityResult> RegisterUser(string UserName, string Email, string Password)
         {
-            User appUser = new User { UserName = UserName, Email = Email};
+            User appUser = new User 
+            { 
+                UserName = UserName,
+                Email = Email,
+                Health = 100,
+                Efficiency = 1,
+                Power = 1,
+                Ingenuity = 1,
+                Charisma= 1,
+                Awereness = 1,
+                Experience = 0,
+            };
             appUser.HideOut = new HideOut();
             appUser.nickName = UserName;
             appUser.Inventory = new Inventory();
