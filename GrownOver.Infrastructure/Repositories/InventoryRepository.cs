@@ -26,10 +26,9 @@ namespace GrownOver.Infrastructure.Repositories
             .Include(p => p.armor)
             .Include(p => p.material)
             .Include(p => p.weapon)
-            .FirstOrDefault(x => x.Id == id))
-            .Result;
+            .FirstOrDefault(x => x.Id == id));
 
-            return inv;
+            return await inv;
 
         }
     }
