@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace GrownOver.Infrastructure.Data
 {
-    internal class GrownOverDbContext : ApiAuthorizationDbContext<User>
+    public class GrownOverDbContext : ApiAuthorizationDbContext<User>
     {
         public GrownOverDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
