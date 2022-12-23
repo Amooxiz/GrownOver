@@ -21,12 +21,13 @@ namespace GrownOver.Infrastructure.Repositories
 
         public async Task<Inventory> GetInventoryById(int id)
         {
-            var inv = _context.Inventories
-                .Include(p => p.food)
-                .Include(p => p.armor)
-                .Include(p => p.material)
-                .Include(p => p.weapon)
-                .FirstOrDefault(x => x.Id == id);
+            var inv = Task.Run(() => _context.Inventories
+            .Include(p => p.food)
+            .Include(p => p.armor)
+            .Include(p => p.material)
+            .Include(p => p.weapon)
+            .FirstOrDefault(x => x.Id == id))
+            .Result;
 
             return inv;
 
