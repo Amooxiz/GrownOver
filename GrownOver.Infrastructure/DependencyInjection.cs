@@ -42,6 +42,8 @@ namespace GrownOver.Infrastructure
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IWeaponService, WeaponService>();
             services.AddTransient<IWeaponRepository, WeaponRepository>();
+            services.AddTransient<IInventoryRepository, InventoryRepository>();
+            services.AddTransient<IInventoryService, InventoryService>();
             return services;
         }
     }
