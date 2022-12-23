@@ -9,10 +9,10 @@ namespace GrownOver.Infrastructure.Responses
 {
     internal class UserLoginResponse : SignInResult
     {
-        public bool Succeeded { get; set; }
+        public new bool Succeeded { get; set; }
         public string Id { get; set; }
-        public bool IsNotAllowed { get; set; }
-        public bool RequiresTwoFactor { get; set; }
-        public bool IsLockedOut { get; set; }
+        public new bool IsNotAllowed { get; set; }
+        public new bool RequiresTwoFactor { get; set; }
+        public new bool IsLockedOut { get; set; }
     }
 }

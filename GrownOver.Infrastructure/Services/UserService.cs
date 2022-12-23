@@ -2,9 +2,7 @@
 using GrownOver.Domain.Models;
 using GrownOver.Infrastructure.Responses;
 using GrownOver.Application.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using GrownOver.Application.ViewModels;
 using Microsoft.AspNetCore.JsonPatch;
 
 namespace GrownOver.Infrastructure.Services

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using GrownOver.Domain.Models;
 using Microsoft.AspNetCore.Authentication;
+using GrownOver.Infrastructure.Repositories;
 
 namespace GrownOver.Infrastructure
 {
@@ -39,6 +40,8 @@ namespace GrownOver.Infrastructure
                 .AddIdentityServerJwt();
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IWeaponService, WeaponService>();
+            services.AddTransient<IWeaponRepository, WeaponRepository>();
             return services;
         }
     }
