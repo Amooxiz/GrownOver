@@ -44,6 +44,8 @@ namespace GrownOver.Infrastructure
             services.AddTransient<IWeaponRepository, WeaponRepository>();
             services.AddTransient<IInventoryRepository, InventoryRepository>();
             services.AddTransient<IInventoryService, InventoryService>();
+            services.AddTransient<IHideOutService, HideOutService>();
+            services.AddTransient<IHideOutRepository, HideOutRepository>();
             return services;
         }
     }

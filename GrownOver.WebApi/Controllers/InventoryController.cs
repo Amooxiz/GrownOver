@@ -21,5 +21,17 @@ namespace GrownOver.WebApi.Controllers
         {
             return await _inventoryService.GetInventoryById(id);
         }
+
+        [HttpDelete("{inventoryid}/{type}")]
+        public void RemoveItem(int inventoryid, string type)
+        {
+            _inventoryService.RemoveItem(inventoryid, type);
+        }
+
+        [HttpGet("{inventoryid}/{itemid}/{type}")]
+        public void AddItem(int inventoryid, int itemid, string type)
+        {
+            _inventoryService.AddItem(inventoryid, itemid, type);
+        }
     }
 }
