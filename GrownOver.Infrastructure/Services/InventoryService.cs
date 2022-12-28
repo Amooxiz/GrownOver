@@ -69,5 +69,15 @@ namespace GrownOver.Infrastructure.Services
 
             return vm;
         }
+
+        public void RemoveItem(int inventoryId, string type)
+        {
+            _inventoryRepository.RemoveItem(inventoryId, type);
+        }
+
+        public void AddItem(int inventoryId, int itemId, string type)
+        {
+            _inventoryRepository.AddItem(inventoryId, itemId, type);
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace GrownOver.Application.Interfaces
     public interface IInventoryRepository
     {
         public Task<Inventory> GetInventoryById(int id);
+        public void RemoveItem(int inventoryId, string type);
+        public void AddItem(int inventoryId, int itemId, string type);
     }
 }
