@@ -21,9 +21,9 @@ namespace GrownOver.Infrastructure.Services
             _hideOutRepository.AddItem(hideOutId, itemId, type);
         }
 
-        public void RemoveItem(int hideoutId, int itemId, string type)
+        public dynamic RemoveItem(int hideoutId, int itemId, string type)
         {
-            _hideOutRepository.RemoveItem(hideoutId, itemId, type);
+            return _hideOutRepository.RemoveItem(hideoutId, itemId, type);
         }
     }
 }

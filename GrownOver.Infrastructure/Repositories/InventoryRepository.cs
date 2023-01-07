@@ -1,6 +1,7 @@
 ﻿using GrownOver.Application.Interfaces;
 using GrownOver.Domain.Models;
 using GrownOver.Infrastructure.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace GrownOver.Infrastructure.Repositories
 
         }
 
-        public void RemoveItem(int inventoryId, string type)
+        public dynamic RemoveItem(int inventoryId, string type)
         {
             var inv = _context.Inventories
             .Include(p => p.food)
@@ -41,25 +42,33 @@ namespace GrownOver.Infrastructure.Repositories
             .Include(p => p.weapon)
             .FirstOrDefault(x => x.Id == inventoryId);
 
+            dynamic tempItem;
+
             switch (type)
             {
                 case "weapon":
+                    tempItem = inv.weapon;
                     inv.weapon = null;
                     break;
                 case "armor":
+                    tempItem = inv.armor;
                     inv.armor = null;
                     break;
                 case "food":
+                    tempItem = inv.food;
                     inv.food = null;
                     break;
                 case "material":
+                    tempItem = inv.material;
                     inv.material = null;
                     break;
                 default:
+                    tempItem = null;
                     break;
             }
 
             _context.SaveChanges();
+            return tempItem;
         }
 
         public void AddItem(int inventoryId, int itemId, string type)

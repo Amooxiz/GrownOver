@@ -23,9 +23,9 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpDelete("{inventoryid}/{type}")]
-        public void RemoveItem(int inventoryid, string type)
+        public dynamic RemoveItem(int inventoryid, string type)
         {
-            _inventoryService.RemoveItem(inventoryid, type);
+            return _inventoryService.RemoveItem(inventoryid, type);
         }
 
         [HttpGet("{inventoryid}/{itemid}/{type}")]
