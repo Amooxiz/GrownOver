@@ -10,6 +10,6 @@ namespace GrownOver.Application.Interfaces
     public interface IHideOutRepository
     {
         public void AddItem(int hideOutId, int itemId, string type);
-        public void RemoveItem(int hideOutId, int itemId, string type);
+        public dynamic RemoveItem(int hideOutId, int itemId, string type);
     }
 }

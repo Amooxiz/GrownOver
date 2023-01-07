@@ -22,9 +22,9 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpDelete("{hideoutid}/{itemid}/{type}")]
-        public void RemoveItem(int hideoutid, int itemid, string type)
+        public dynamic RemoveItem(int hideoutid, int itemid, string type)
         {
-            _hideOutService.RemoveItem(hideoutid, itemid, type);
+            return _hideOutService.RemoveItem(hideoutid, itemid, type);
         }
     }
 }

@@ -32,7 +32,8 @@ namespace GrownOver.Infrastructure.Services
                     Weight = inventory.weapon.Weight,
                     Damage = inventory.weapon.Damage,
                     Price = inventory.weapon.Price,
-                    Durability = inventory.weapon.Durability
+                    Durability = inventory.weapon.Durability,
+                    Loot = inventory.weapon.Loot,
                 },
 
                 armorVM = new ArmorVM()
@@ -43,7 +44,8 @@ namespace GrownOver.Infrastructure.Services
                     Weight = inventory.armor.Weight,
                     Durability = inventory.armor.Durability,
                     Price = inventory.armor.Price,
-                    Resistance = inventory.armor.Resistance
+                    Resistance = inventory.armor.Resistance,
+                    Loot = inventory.armor.Loot
                 },
 
                 foodVM = new FoodVM()
@@ -53,7 +55,8 @@ namespace GrownOver.Infrastructure.Services
                     Description = inventory.food.Description,
                     Weight = inventory.food.Weight,
                     Price = inventory.food.Price,
-                    Energy = inventory.food.Energy
+                    Energy = inventory.food.Energy,
+                    Loot = inventory.food.Loot
                 },
 
                 materialVM = new MaterialVM()
@@ -63,16 +66,17 @@ namespace GrownOver.Infrastructure.Services
                     Description = inventory.material.Description,
                     Weight = inventory.material.Weight,
                     Price = inventory.material.Price,
-                    Quality = inventory.material.Quality
+                    Quality = inventory.material.Quality,
+                    Loot = inventory.material.Loot
                 }
             };
 
             return vm;
         }
 
-        public void RemoveItem(int inventoryId, string type)
+        public dynamic RemoveItem(int inventoryId, string type)
         {
-            _inventoryRepository.RemoveItem(inventoryId, type);
+            return _inventoryRepository.RemoveItem(inventoryId, type);
         }
 
         public void AddItem(int inventoryId, int itemId, string type)

@@ -53,7 +53,7 @@ namespace GrownOver.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public void RemoveItem(int hideOutId, int itemId, string type)
+        public dynamic RemoveItem(int hideOutId, int itemId, string type)
         {
             var hideOut = _context.HideOuts.Find(hideOutId);
             dynamic? baseItem;
@@ -84,6 +84,8 @@ namespace GrownOver.Infrastructure.Repositories
 
             _context.BaseItemHideouts.Remove(baseItemHideout);
             _context.SaveChanges();
+
+            return baseItem;
         }
     }
 }

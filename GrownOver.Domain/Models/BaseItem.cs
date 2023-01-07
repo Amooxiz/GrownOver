@@ -7,6 +7,7 @@
         public int Price { get; set; }
         public string? Description { get; set; }
         public int Weight { get; set; }
+        public int Loot { get; set; }
         public virtual ICollection<BaseItemHideout> BaseItemHideouts { get; set; }
     }
 }
