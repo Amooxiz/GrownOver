@@ -1,4 +1,5 @@
-﻿using GrownOver.Domain.Models;
+﻿using GrownOver.Application.ViewModels;
+using GrownOver.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace GrownOver.Application.Interfaces
     {
         public void AddItem(int hideOutId, int itemId, string type);
         public dynamic RemoveItem(int hideOutId, int itemId, string type);
+        public ItemsVM GetItemsByHideoutId(int hideoutId);
     }
 }
