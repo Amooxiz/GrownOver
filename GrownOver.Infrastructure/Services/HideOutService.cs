@@ -1,4 +1,5 @@
 ﻿using GrownOver.Application.Interfaces;
+using GrownOver.Application.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,11 @@ namespace GrownOver.Infrastructure.Services
         public dynamic RemoveItem(int hideoutId, int itemId, string type)
         {
             return _hideOutRepository.RemoveItem(hideoutId, itemId, type);
+        }
+
+        public ItemsVM GetItemsByHideoutId(int hideoutId)
+        {
+            return _hideOutRepository.GetItemsByHideoutId(hideoutId);
         }
     }
 }
