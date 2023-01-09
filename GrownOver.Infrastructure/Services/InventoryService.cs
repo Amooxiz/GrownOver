@@ -34,6 +34,7 @@ namespace GrownOver.Infrastructure.Services
                     Price = inventory.weapon.Price,
                     Durability = inventory.weapon.Durability,
                     Loot = inventory.weapon.Loot,
+                    Type = inventory.weapon.Type,
                 },
 
                 armorVM = new ArmorVM()
@@ -45,7 +46,8 @@ namespace GrownOver.Infrastructure.Services
                     Durability = inventory.armor.Durability,
                     Price = inventory.armor.Price,
                     Resistance = inventory.armor.Resistance,
-                    Loot = inventory.armor.Loot
+                    Loot = inventory.armor.Loot,
+                    Type = inventory.armor.Type
                 },
 
                 foodVM = new FoodVM()
@@ -56,7 +58,8 @@ namespace GrownOver.Infrastructure.Services
                     Weight = inventory.food.Weight,
                     Price = inventory.food.Price,
                     Energy = inventory.food.Energy,
-                    Loot = inventory.food.Loot
+                    Loot = inventory.food.Loot,
+                    Type = inventory.food.Type,
                 },
 
                 materialVM = new MaterialVM()
@@ -67,7 +70,8 @@ namespace GrownOver.Infrastructure.Services
                     Weight = inventory.material.Weight,
                     Price = inventory.material.Price,
                     Quality = inventory.material.Quality,
-                    Loot = inventory.material.Loot
+                    Loot = inventory.material.Loot,
+                    Type = inventory.material.Type
                 }
             };
 
