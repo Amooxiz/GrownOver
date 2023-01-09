@@ -116,6 +116,7 @@ namespace GrownOver.Infrastructure.Repositories
                         Resistance = armor.Resistance,
                         Weight = armor.Weight,
                         Id = armor.Id,
+                        Type = armor.Type,
                     };
                     itemsVM.armorVMs.Add(armorVM);
                 }
@@ -132,6 +133,7 @@ namespace GrownOver.Infrastructure.Repositories
                         Weight = weapon.Weight,
                         Id = weapon.Id,
                         Damage = weapon.Damage,
+                        Type = weapon.Type,
                     };
                     itemsVM.weaponVMs.Add(weaponVM);
                 }
@@ -147,6 +149,7 @@ namespace GrownOver.Infrastructure.Repositories
                         Weight = material.Weight,
                         Id = material.Id,
                         Quality = material.Quality,
+                        Type = material.Type,
                     };
                     itemsVM.materialVMs.Add(materialVM);
                 }
@@ -161,6 +164,7 @@ namespace GrownOver.Infrastructure.Repositories
                         Price = food.Price,
                         Weight = food.Weight,
                         Id = food.Id,
+                        Type = food.Type,
                     };
                     itemsVM.foodVMs.Add(foodVM);
                 }

@@ -16,5 +16,6 @@ namespace GrownOver.Application.ViewModels
         public float Durability { get; set; }
         public int Damage { get; set; }
         public int Loot { get; set; }
+        public string? Type { get; set; }
     }
 }

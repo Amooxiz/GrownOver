@@ -15,5 +15,6 @@ namespace GrownOver.Application.ViewModels
         public int Weight { get; set; }
         public int Quality { get; set; }
         public int Loot { get; set; }
+        public string? Type { get; set; }
     }
 }

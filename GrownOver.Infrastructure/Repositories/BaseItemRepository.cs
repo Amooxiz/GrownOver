@@ -42,6 +42,7 @@ namespace GrownOver.Infrastructure.Repositories
                     Resistance = item.Resistance,
                     Weight = item.Weight,
                     Loot = item.Loot,
+                    Type = item.Type,
                 };
                 itemsVM.armorVMs.Add(armorVM);
             }
@@ -58,6 +59,7 @@ namespace GrownOver.Infrastructure.Repositories
                     Weight = item.Weight,
                     Damage = item.Damage,
                     Loot = item.Loot,
+                    Type = item.Type
                 };
                 itemsVM.weaponVMs.Add(weaponVM);
             }
@@ -73,6 +75,7 @@ namespace GrownOver.Infrastructure.Repositories
                     Weight = item.Weight,
                     Quality = item.Quality,
                     Loot = item.Loot,
+                    Type = item.Type
                 };
                 itemsVM.materialVMs.Add(materialVM);
             }
@@ -88,6 +91,7 @@ namespace GrownOver.Infrastructure.Repositories
                     Weight = item.Weight,
                     Energy = item.Energy,
                     Loot = item.Loot,
+                    Type = item.Type
                 };
                 itemsVM.foodVMs.Add(foodVM);
             }

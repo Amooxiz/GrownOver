@@ -35,6 +35,7 @@ namespace GrownOver.Infrastructure.Services
                 Loot = pushWeaponRequest.Loot,
                 Name = pushWeaponRequest.Name,
                 Price = pushWeaponRequest.Price,
+                Type = "weapon"
             };
 
             _baseItemRepository.AddWeapon(weapon);
@@ -51,6 +52,7 @@ namespace GrownOver.Infrastructure.Services
                 Price = pushArmorRequest.Price,
                 Resistance = pushArmorRequest.Resistance,
                 Weight = pushArmorRequest.Weight,
+                Type = "armor"
             };
 
             _baseItemRepository.AddArmor(armor);
@@ -66,6 +68,7 @@ namespace GrownOver.Infrastructure.Services
                 Name = pushMaterialRequest.Name,
                 Price = pushMaterialRequest.Price,
                 Quality = pushMaterialRequest.Quality,
+                Type = "material"
             };
 
             _baseItemRepository.AddMaterial(material);
@@ -80,7 +83,8 @@ namespace GrownOver.Infrastructure.Services
                 Energy = pushFoodRequest.Energy,
                 Loot = pushFoodRequest.Loot,
                 Name = pushFoodRequest.Name,
-                Price = pushFoodRequest.Price
+                Price = pushFoodRequest.Price,
+                Type = "food"
             };
 
             _baseItemRepository.AddFood(food);

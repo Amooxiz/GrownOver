@@ -39,10 +39,22 @@ namespace GrownOver.Infrastructure.Services
             appUser.HideOut = new HideOut();
             appUser.nickName = UserName;
             appUser.Inventory = new Inventory();
-            appUser.Inventory.armor = new Armor();
-            appUser.Inventory.weapon = new Weapon();
-            appUser.Inventory.food = new Food();
-            appUser.Inventory.material = new Material();
+            appUser.Inventory.armor = new Armor()
+            {
+                Type = "armor"
+            };
+            appUser.Inventory.weapon = new Weapon()
+            {
+                Type = "weapon"
+            };
+            appUser.Inventory.food = new Food()
+            {
+                Type = "food"
+            };
+            appUser.Inventory.material = new Material()
+            {
+                Type = "material"
+            };
             IdentityResult result = await _userManager.CreateAsync(appUser, Password);
             
             if (result.Succeeded)
