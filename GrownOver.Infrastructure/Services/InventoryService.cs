@@ -1,5 +1,6 @@
 ﻿using GrownOver.Application.Interfaces;
 using GrownOver.Application.ViewModels;
+using GrownOver.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,11 @@ namespace GrownOver.Infrastructure.Services
             InventoryVM vm = new InventoryVM()
             {
                 Id = inventory.Id,
-                weaponVM = new WeaponVM()
+            };
+
+            if (inventory.weapon != null)
+            {
+                vm.weaponVM = new WeaponVM()
                 {
                     Id = inventory.WeaponId,
                     Name = inventory.weapon.Name,
@@ -35,9 +40,12 @@ namespace GrownOver.Infrastructure.Services
                     Durability = inventory.weapon.Durability,
                     Loot = inventory.weapon.Loot,
                     Type = inventory.weapon.Type,
-                },
+                };
+            }
 
-                armorVM = new ArmorVM()
+            if (inventory.armor != null)
+            {
+                vm.armorVM = new ArmorVM()
                 {
                     Id = inventory.ArmorId,
                     Name = inventory.armor.Name,
@@ -48,9 +56,12 @@ namespace GrownOver.Infrastructure.Services
                     Resistance = inventory.armor.Resistance,
                     Loot = inventory.armor.Loot,
                     Type = inventory.armor.Type
-                },
+                };
+            }
 
-                foodVM = new FoodVM()
+            if (inventory.food != null)
+            {
+                vm.foodVM = new FoodVM()
                 {
                     Id = inventory.FoodId,
                     Name = inventory.food.Name,
@@ -60,9 +71,12 @@ namespace GrownOver.Infrastructure.Services
                     Energy = inventory.food.Energy,
                     Loot = inventory.food.Loot,
                     Type = inventory.food.Type,
-                },
+                };
+            }
 
-                materialVM = new MaterialVM()
+            if (inventory.weapon != null)
+            {
+                vm.materialVM = new MaterialVM()
                 {
                     Id = inventory.MaterialId,
                     Name = inventory.material.Name,
@@ -72,8 +86,8 @@ namespace GrownOver.Infrastructure.Services
                     Quality = inventory.material.Quality,
                     Loot = inventory.material.Loot,
                     Type = inventory.material.Type
-                }
-            };
+                };
+            }
 
             return vm;
         }
