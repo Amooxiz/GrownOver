@@ -74,7 +74,7 @@ namespace GrownOver.Infrastructure.Services
                 };
             }
 
-            if (inventory.weapon != null)
+            if (inventory.material != null)
             {
                 vm.materialVM = new MaterialVM()
                 {
