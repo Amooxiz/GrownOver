@@ -9,29 +9,30 @@ namespace GrownOver.WebApi.Controllers
     [Route("v1/[controller]/[action]")]
     public class HideOutController : ControllerBase
     {
-        private readonly IHideOutService _hideOutService;
+        private readonly IMediator _mediator;
+        private const string sender = "hideOutController";
 
-        public HideOutController(IHideOutService hideOutService)
+        public HideOutController(IMediator mediator)
         {
-            _hideOutService = hideOutService;
+            _mediator = mediator;
         }
 
         [HttpGet("{hideoutid}/{itemid}/{type}/{customname}")]
-        public dynamic AddItem(int hideoutid, int itemid, string type, string customname)
+        public async Task<dynamic> AddItem(int hideoutid, int itemid, string type, string customname)
         {
-            return _hideOutService.AddItem(hideoutid, itemid, type, customname);
+            return await _mediator.SendGet(sender, hideoutid, itemid, type, customname);
         }
 
         [HttpDelete("{hideoutid}/{itemid}/{type}")]
-        public dynamic RemoveItem(int hideoutid, int itemid, string type)
+        public async Task<dynamic> RemoveItem(int hideoutid, int itemid, string type)
         {
-            return _hideOutService.RemoveItem(hideoutid, itemid, type);
+            return await _mediator.SendDelete(sender, hideoutid, itemid, type);
         }
 
         [HttpGet("{hideoutid}")]
-        public ItemsVM GetItemsByHideoutId(int hideoutid)
+        public async Task<ItemsVM> GetItemsByHideoutId(int hideoutid)
         {
-            return _hideOutService.GetItemsByHideoutId(hideoutid);
+            return await _mediator.SendGet(sender, hideoutid);
         }
     }
 }
