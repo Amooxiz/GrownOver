@@ -14,26 +14,22 @@ namespace GrownOver.WebApi.Controllers
     [Route("v1/[controller]/[action]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _iUserService;
         private readonly IMediator _mediator;
         private const string sender = "userController";
-        public UserController(IUserService userService, IMediator mediator)
+        public UserController(IMediator mediator)
         {
-            _iUserService = userService;
             _mediator = mediator;
         }
 
         [HttpGet("{id}")]
         public async Task<UserVM> GetUser(string id)
         {
-            //return await _iUserService.GetUser(id);
             return await _mediator.SendGet(sender, id);
         }
 
         [HttpPost]
         public async Task<IdentityResult> Register([FromBody] RegisterUserRequest user)
         {
-            //return await _iUserService.RegisterUser(user.UserName, user.Email, user.Password);
             return await _mediator.SendPost(sender, user);
         }
 
@@ -43,17 +39,10 @@ namespace GrownOver.WebApi.Controllers
             return await _mediator.SendPost(sender, user);
         }
 
-        //[HttpGet]
-        //public async void LogOut()
-        //{
-        //   _iUserService.SignOut();
-        //}
-
         [HttpPatch("{id}")]
         public async Task<IdentityResult> Update([FromBody] JsonPatchDocument<User> patch,
             [FromRoute] string id)
         {
-            //return await _iUserService.UpdateUser(patch, id);
             return await _mediator.SendPatch(sender, patch, id);
         }
 

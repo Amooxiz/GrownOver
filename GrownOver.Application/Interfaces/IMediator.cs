@@ -11,5 +11,6 @@ namespace GrownOver.Application.Interfaces
         public dynamic SendPost(string sender, params dynamic[] values);
         public dynamic SendGet(string sender, params dynamic[] values);
         public dynamic SendPatch(string sender, params dynamic[] values);
+        public dynamic SendDelete(string sender, params dynamic[] values);
     }
 }
