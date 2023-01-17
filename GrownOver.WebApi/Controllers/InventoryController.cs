@@ -18,21 +18,21 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<InventoryVM> GetInventory([FromRoute] int id)
+        public InventoryVM GetInventory([FromRoute] int id)
         {
-            return await _mediator.SendGet(sender, id);
+            return _mediator.SendGet(sender, id);
         }
 
         [HttpDelete("{inventoryid}/{type}")]
-        public async Task<dynamic> RemoveItem(int inventoryid, string type)
+        public dynamic RemoveItem(int inventoryid, string type)
         {
-            return await _mediator.SendDelete(sender, inventoryid, type);
+            return _mediator.SendDelete(sender, inventoryid, type);
         }
 
         [HttpGet("{inventoryid}/{itemid}/{type}")]
-        public async Task<dynamic> AddItem(int inventoryid, int itemid, string type)
+        public dynamic AddItem(int inventoryid, int itemid, string type)
         {
-            return await _mediator.SendGet(sender, inventoryid, itemid, type);
+            return _mediator.SendGet(sender, inventoryid, itemid, type);
         }
     }
 }

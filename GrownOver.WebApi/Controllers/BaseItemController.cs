@@ -19,21 +19,21 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ItemsVM> GetAllItems()
+        public ItemsVM GetAllItems()
         {
-            return await _mediator.SendGet(sender);
+            return _mediator.SendGet(sender);
         }
 
         [HttpPost]
-        public async Task<dynamic> AddItem([FromBody] PushItemRequest pushItemRequest)
+        public dynamic AddItem([FromBody] PushItemRequest pushItemRequest)
         {
-            return await _mediator.SendPost(sender, pushItemRequest);
+            return _mediator.SendPost(sender, pushItemRequest);
         }
 
         [HttpGet("{id}/{type}")]
-        public async Task<dynamic> GetItem(int id, string type)
+        public dynamic GetItem(int id, string type)
         {
-            return await _mediator.SendGet(sender, id, type);
+            return _mediator.SendGet(sender, id, type);
         }
     }
 }

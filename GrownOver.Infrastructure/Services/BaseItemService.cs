@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,76 +34,82 @@ namespace GrownOver.Infrastructure.Services
             switch (Type)
             {
                 case "weapon":
-                     return _baseItemRepository.AddWeapon((Weapon)item);
+                    _baseItemRepository.AddWeapon((Weapon)item);
                     break;
                 case "armor":
-                     return _baseItemRepository.AddArmor((Armor)item);
+                    _baseItemRepository.AddArmor((Armor)item);
                     break;
                 case "food":
-                     return _baseItemRepository.AddFood((Food)item);
+                    _baseItemRepository.AddFood((Food)item);
                     break;
                 case "material":
-                    return _baseItemRepository.AddMaterial((Material)item);
+                    _baseItemRepository.AddMaterial((Material)item);
                     break;
                 default:
-                    return null;
-                    break;
+                    throw new Exception("Wrong type");
             }
-        }
 
-        public void AddWeapon(string? Name, int Price, string? Description, int Weight, int Damage, int Loot)
-        {
-            
-
-            //_baseItemRepository.AddWeapon(weapon);
-        }
-
-        public void AddArmor(string? Name, int Price, string? Description, int Weight, int Resistance, int Loot)
-        {
-            Armor armor = new Armor()
+            switch (Type)
             {
-                Description = Description,
-                Loot = Loot,
-                Name = Name,
-                Price = Price,
-                Resistance = Resistance,
-                Weight = Weight,
-                Type = "armor"
-            };
-
-            _baseItemRepository.AddArmor(armor);
-        }
-
-        public void AddMaterial(string? Name, int Price, string? Description, int Weight, int Quality, int Loot)
-        {
-            Material material = new Material()
-            {
-                Weight = Weight,
-                Description = Description,
-                Loot = Loot,
-                Name = Name,
-                Price = Price,
-                Quality = Quality,
-                Type = "material"
-            };
-
-            _baseItemRepository.AddMaterial(material);
-        }
-
-        public void AddFood(string? Name, int Price, string? Description, int Weight, int Energy, int Loot)
-        {
-            Food food = new Food()
-            {
-                Weight = Weight,
-                Description = Description,
-                Energy = Energy,
-                Loot = Loot,
-                Name = Name,
-                Price = Price,
-                Type = "food"
-            };
-
-            _baseItemRepository.AddFood(food);
+                case "weapon":
+                    Weapon weapon = (Weapon)item;
+                    return new WeaponVM()
+                    {
+                        Damage = weapon.Damage,
+                        Description = weapon.Description,
+                        Loot = weapon.Loot,
+                        CustomName = weapon.Name,
+                        Name = weapon.Name,
+                        Price = weapon.Price,
+                        Type = weapon.Type,
+                        Weight = weapon.Weight,
+                        Id = weapon.Id
+                    };
+                case "armor":
+                    Armor armor = (Armor)item;
+                    return new ArmorVM()
+                    {
+                        Resistance = armor.Resistance,
+                        Description = armor.Description,
+                        Loot = armor.Loot,
+                        CustomName = armor.Name,
+                        Name = armor.Name,
+                        Price = armor.Price,
+                        Type = armor.Type,
+                        Weight = armor.Weight,
+                        Id = armor.Id
+                    };
+                case "food":
+                    Food food = (Food)item;
+                    return new FoodVM()
+                    {
+                        Energy = food.Energy,
+                        Description = food.Description,
+                        Loot = food.Loot,
+                        CustomName = food.Name,
+                        Name = food.Name,
+                        Price = food.Price,
+                        Type = food.Type,
+                        Weight = food.Weight,
+                        Id = food.Id
+                    };
+                case "material":
+                    Material material = (Material)item;
+                    return new MaterialVM()
+                    {
+                        Quality = material.Quality,
+                        Description = material.Description,
+                        Loot = material.Loot,
+                        CustomName = material.Name,
+                        Name = material.Name,
+                        Price = material.Price,
+                        Type = material.Type,
+                        Weight = material.Weight,
+                        Id = material.Id
+                    };
+                default:
+                    throw new Exception("Wrong type");
+            }
         }
 
         public dynamic GetItem(int id, string type)

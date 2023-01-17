@@ -96,32 +96,28 @@ namespace GrownOver.Infrastructure.Repositories
             return itemsVM;
         }
 
-        public Weapon AddWeapon(Weapon weapon)
+        public void AddWeapon(Weapon weapon)
         {
             _context.Weapons.Add(weapon);
             _context.SaveChanges();
-            return weapon;
         }
 
-        public Armor AddArmor(Armor armor)
+        public void AddArmor(Armor armor)
         {
             _context.Armors.Add(armor);
             _context.SaveChanges();
-            return armor;
         }
 
-        public Material AddMaterial(Material material)
+        public void AddMaterial(Material material)
         {
             _context.Materials.Add(material);
             _context.SaveChanges();
-            return material;
         }
 
-        public Food AddFood(Food food)
+        public void AddFood(Food food)
         {
             _context.Foods.Add(food);
             _context.SaveChanges();
-            return food;
         }
 
         public dynamic GetItem(int id, string type)
