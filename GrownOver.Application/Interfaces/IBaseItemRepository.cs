@@ -11,10 +11,10 @@ namespace GrownOver.Application.Interfaces
     public interface IBaseItemRepository
     {
         public ItemsVM GetAllItems();
-        public Weapon AddWeapon(Weapon weapon);
-        public Armor AddArmor(Armor armor);
-        public Material AddMaterial(Material material);
-        public Food AddFood(Food food);
+        public void AddWeapon(Weapon weapon);
+        public void AddArmor(Armor armor);
+        public void AddMaterial(Material material);
+        public void AddFood(Food food);
         public dynamic GetItem(int id, string type);
     }
 }

@@ -18,21 +18,21 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpGet("{hideoutid}/{itemid}/{type}/{customname}")]
-        public async Task<dynamic> AddItem(int hideoutid, int itemid, string type, string customname)
+        public dynamic AddItem(int hideoutid, int itemid, string type, string customname)
         {
-            return await _mediator.SendGet(sender, hideoutid, itemid, type, customname);
+            return _mediator.SendGet(sender, hideoutid, itemid, type, customname);
         }
 
         [HttpDelete("{hideoutid}/{itemid}/{type}")]
-        public async Task<dynamic> RemoveItem(int hideoutid, int itemid, string type)
+        public dynamic RemoveItem(int hideoutid, int itemid, string type)
         {
-            return await _mediator.SendDelete(sender, hideoutid, itemid, type);
+            return _mediator.SendDelete(sender, hideoutid, itemid, type);
         }
 
         [HttpGet("{hideoutid}")]
-        public async Task<ItemsVM> GetItemsByHideoutId(int hideoutid)
+        public ItemsVM GetItemsByHideoutId(int hideoutid)
         {
-            return await _mediator.SendGet(sender, hideoutid);
+            return _mediator.SendGet(sender, hideoutid);
         }
     }
 }

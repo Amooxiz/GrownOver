@@ -115,7 +115,7 @@ namespace GrownOver.Contracts
                     {
                         if (values[0] is int && values[1] is int && values[2] is string && values[3] is string)
                         {
-                            return _hideOutService.AddItem((int)values[0], (int)values[1], (string)values[2], (string)values[2]);
+                            return _hideOutService.AddItem((int)values[0], (int)values[1], (string)values[2], (string)values[3]);
                         }
                         else
                         {
