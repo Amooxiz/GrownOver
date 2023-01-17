@@ -1,3 +1,4 @@
+using GrownOver.Contracts;
 using GrownOver.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddProjectService(builder.Configuration);
+builder.Services.AddContractsServices();
 
 builder.Services.AddCors(options =>
 {

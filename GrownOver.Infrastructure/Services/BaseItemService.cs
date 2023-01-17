@@ -1,7 +1,7 @@
 ﻿using GrownOver.Application.Interfaces;
 using GrownOver.Application.ViewModels;
-using GrownOver.Contracts.RequestsModels;
 using GrownOver.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,12 @@ namespace GrownOver.Infrastructure.Services
     public class BaseItemService : IBaseItemService
     {
         private readonly IBaseItemRepository _baseItemRepository;
+        private readonly IItemFactory _itemFactory;
 
-        public BaseItemService(IBaseItemRepository baseItemRepository)
+        public BaseItemService(IBaseItemRepository baseItemRepository, IItemFactory itemFactory)
         {
             _baseItemRepository = baseItemRepository;
+            _itemFactory = itemFactory;
         }
 
         public ItemsVM GetAllItems()
@@ -24,66 +26,79 @@ namespace GrownOver.Infrastructure.Services
             return _baseItemRepository.GetAllItems();
         }
 
-        public void AddWeapon(PushWeaponRequest pushWeaponRequest)
+        public dynamic AddItem(string? Name, int Price, string? Description, int Weight, int Loot, int Value, string Type)
         {
-            Weapon weapon = new Weapon()
-            {
-                Weight = pushWeaponRequest.Weight,
-                Durability = pushWeaponRequest.Durability,
-                Description = pushWeaponRequest.Description,
-                Damage = pushWeaponRequest.Damage,
-                Loot = pushWeaponRequest.Loot,
-                Name = pushWeaponRequest.Name,
-                Price = pushWeaponRequest.Price,
-                Type = "weapon"
-            };
+            BaseItem item = _itemFactory.CreateItem(Type, Name, Price, Description, Weight, Loot, Value);
 
-            _baseItemRepository.AddWeapon(weapon);
+            switch (Type)
+            {
+                case "weapon":
+                     return _baseItemRepository.AddWeapon((Weapon)item);
+                    break;
+                case "armor":
+                     return _baseItemRepository.AddArmor((Armor)item);
+                    break;
+                case "food":
+                     return _baseItemRepository.AddFood((Food)item);
+                    break;
+                case "material":
+                    return _baseItemRepository.AddMaterial((Material)item);
+                    break;
+                default:
+                    return null;
+                    break;
+            }
         }
 
-        public void AddArmor(PushArmorRequest pushArmorRequest)
+        public void AddWeapon(string? Name, int Price, string? Description, int Weight, int Damage, int Loot)
+        {
+            
+
+            //_baseItemRepository.AddWeapon(weapon);
+        }
+
+        public void AddArmor(string? Name, int Price, string? Description, int Weight, int Resistance, int Loot)
         {
             Armor armor = new Armor()
             {
-                Description = pushArmorRequest.Description,
-                Durability = pushArmorRequest.Durability,
-                Loot = pushArmorRequest.Loot,
-                Name = pushArmorRequest.Name,
-                Price = pushArmorRequest.Price,
-                Resistance = pushArmorRequest.Resistance,
-                Weight = pushArmorRequest.Weight,
+                Description = Description,
+                Loot = Loot,
+                Name = Name,
+                Price = Price,
+                Resistance = Resistance,
+                Weight = Weight,
                 Type = "armor"
             };
 
             _baseItemRepository.AddArmor(armor);
         }
 
-        public void AddMaterial(PushMaterialRequest pushMaterialRequest)
+        public void AddMaterial(string? Name, int Price, string? Description, int Weight, int Quality, int Loot)
         {
             Material material = new Material()
             {
-                Weight = pushMaterialRequest.Weight,
-                Description = pushMaterialRequest.Description,
-                Loot = pushMaterialRequest.Loot,
-                Name = pushMaterialRequest.Name,
-                Price = pushMaterialRequest.Price,
-                Quality = pushMaterialRequest.Quality,
+                Weight = Weight,
+                Description = Description,
+                Loot = Loot,
+                Name = Name,
+                Price = Price,
+                Quality = Quality,
                 Type = "material"
             };
 
             _baseItemRepository.AddMaterial(material);
         }
 
-        public void AddFood(PushFoodRequest pushFoodRequest)
+        public void AddFood(string? Name, int Price, string? Description, int Weight, int Energy, int Loot)
         {
             Food food = new Food()
             {
-                Weight = pushFoodRequest.Weight,
-                Description = pushFoodRequest.Description,
-                Energy = pushFoodRequest.Energy,
-                Loot = pushFoodRequest.Loot,
-                Name = pushFoodRequest.Name,
-                Price = pushFoodRequest.Price,
+                Weight = Weight,
+                Description = Description,
+                Energy = Energy,
+                Loot = Loot,
+                Name = Name,
+                Price = Price,
                 Type = "food"
             };
 

@@ -10,16 +10,20 @@ namespace GrownOver.WebApi.Controllers
     public class InventoryController : ControllerBase
     {
         private readonly IInventoryService _inventoryService;
+        private readonly IMediator _mediator;
+        private const string sender = "inventoryController";
 
-        public InventoryController(IInventoryService inventoryService)
+        public InventoryController(IInventoryService inventoryService, IMediator mediator)
         {
             _inventoryService = inventoryService;
+            _mediator = mediator;
         }
 
         [HttpGet("{id}")]
         public async Task<InventoryVM> GetInventory([FromRoute] int id)
         {
-            return await _inventoryService.GetInventoryById(id);
+            //return await _inventoryService.GetInventoryById(id);
+            return await _mediator.SendGet(sender, id);
         }
 
         [HttpDelete("{inventoryid}/{type}")]
@@ -29,9 +33,10 @@ namespace GrownOver.WebApi.Controllers
         }
 
         [HttpGet("{inventoryid}/{itemid}/{type}")]
-        public void AddItem(int inventoryid, int itemid, string type)
+        public async Task<dynamic> AddItem(int inventoryid, int itemid, string type)
         {
-            _inventoryService.AddItem(inventoryid, itemid, type);
+            //_inventoryService.AddItem(inventoryid, itemid, type);
+            return await _mediator.SendGet(sender, inventoryid, itemid, type);
         }
     }
 }

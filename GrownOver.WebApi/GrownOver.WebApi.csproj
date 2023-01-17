@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GrownOver.Contracts\GrownOver.Contracts.csproj" />
-    <ProjectReference Include="..\GrownOver.Infrastructure\GrownOver.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

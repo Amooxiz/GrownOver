@@ -6,5 +6,6 @@
         public BaseItem BaseItem { get; set; }
         public int HideoutId { get; set; }
         public HideOut HideOut { get; set; }
+        public string? CustomName { get; set; }
     }
 }

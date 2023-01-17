@@ -20,7 +20,7 @@ namespace GrownOver.Infrastructure.Repositories
             _context = context;
         }
 
-        public void AddItem(int hideOutId, int itemId, string type)
+        public dynamic AddItem(int hideOutId, int itemId, string type, string customName)
         {
             var hideOut = _context.HideOuts.Find(hideOutId);
             dynamic? baseItem;
@@ -47,11 +47,14 @@ namespace GrownOver.Infrastructure.Repositories
             BaseItemHideout baseItemHideout = new BaseItemHideout()
             {
                 HideOut = hideOut,
-                BaseItem = baseItem
+                BaseItem = baseItem,
+                CustomName = customName
             };
 
             _context.BaseItemHideouts.Add(baseItemHideout);
             _context.SaveChanges();
+
+            return baseItem;
         }
 
         public dynamic RemoveItem(int hideOutId, int itemId, string type)
@@ -109,7 +112,6 @@ namespace GrownOver.Infrastructure.Repositories
                     ArmorVM armorVM = new ArmorVM()
                     {
                         Description = armor.Description,
-                        Durability = armor.Durability,
                         Loot = armor.Loot,
                         Name = armor.Name,
                         Price = armor.Price,
@@ -126,7 +128,6 @@ namespace GrownOver.Infrastructure.Repositories
                     WeaponVM weaponVM = new WeaponVM()
                     {
                         Description = weapon.Description,
-                        Durability = weapon.Durability,
                         Loot = weapon.Loot,
                         Name = weapon.Name,
                         Price = weapon.Price,
