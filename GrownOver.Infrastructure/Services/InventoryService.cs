@@ -19,9 +19,9 @@ namespace GrownOver.Infrastructure.Services
             _inventoryRepository = inventoryRepository;
         }
 
-        public async Task<InventoryVM> GetInventoryById(int id)
+        public InventoryVM GetInventoryById(int id)
         {
-            var inventory = await _inventoryRepository.GetInventoryById(id);
+            var inventory = _inventoryRepository.GetInventoryById(id);
 
             InventoryVM vm = new InventoryVM()
             {
