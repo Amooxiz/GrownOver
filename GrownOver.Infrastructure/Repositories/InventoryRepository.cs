@@ -71,7 +71,7 @@ namespace GrownOver.Infrastructure.Repositories
             return tempItem;
         }
 
-        public void AddItem(int inventoryId, int itemId, string type)
+        public dynamic AddItem(int inventoryId, int itemId, string type)
         {
             var inv = _context.Inventories
             .Include(p => p.food)
@@ -100,10 +100,12 @@ namespace GrownOver.Infrastructure.Repositories
                     inv.material = baseItem;
                     break;
                 default:
+                    baseItem = null;
                     break;
             }
 
             _context.SaveChanges();
+            return baseItem;
         }
     }
 }

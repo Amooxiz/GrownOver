@@ -16,10 +16,10 @@ namespace GrownOver.WebApi.Controllers
             _hideOutService = hideOutService;
         }
 
-        [HttpGet("{hideoutid}/{itemid}/{type}")]
-        public void AddItem(int hideoutid, int itemid, string type)
+        [HttpGet("{hideoutid}/{itemid}/{type}/{customname}")]
+        public dynamic AddItem(int hideoutid, int itemid, string type, string customname)
         {
-            _hideOutService.AddItem(hideoutid, itemid, type);
+            return _hideOutService.AddItem(hideoutid, itemid, type, customname);
         }
 
         [HttpDelete("{hideoutid}/{itemid}/{type}")]

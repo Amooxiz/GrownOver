@@ -48,6 +48,7 @@ namespace GrownOver.Infrastructure
             services.AddTransient<IHideOutRepository, HideOutRepository>();
             services.AddTransient<IBaseItemRepository, BaseItemRepository>();
             services.AddTransient<IBaseItemService, BaseItemService>();
+            services.AddTransient<IItemFactory, ItemFactory>();
             return services;
         }
     }

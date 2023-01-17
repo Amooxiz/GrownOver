@@ -4,6 +4,7 @@ using GrownOver.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrownOver.Infrastructure.Migrations
 {
     [DbContext(typeof(GrownOverDbContext))]
-    partial class GrownOverDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230115192344_weaponArmorPropDrop")]
+    partial class weaponArmorPropDrop
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -543,6 +545,9 @@ namespace GrownOver.Infrastructure.Migrations
                 {
                     b.HasBaseType("GrownOver.Domain.Models.BaseItem");
 
+                    b.Property<float>("Durability")
+                        .HasColumnType("real");
+
                     b.Property<int>("Resistance")
                         .HasColumnType("int");
 
@@ -575,6 +580,9 @@ namespace GrownOver.Infrastructure.Migrations
 
                     b.Property<int>("Damage")
                         .HasColumnType("int");
+
+                    b.Property<float>("Durability")
+                        .HasColumnType("real");
 
                     b.ToTable("Weapons", (string)null);
                 });

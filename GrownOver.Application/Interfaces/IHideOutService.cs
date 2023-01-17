@@ -9,7 +9,7 @@ namespace GrownOver.Application.Interfaces
 {
     public interface IHideOutService
     {
-        public void AddItem(int hideOutId, int itemId, string type);
+        public dynamic AddItem(int hideOutId, int itemId, string type, string customName);
         public dynamic RemoveItem(int hideOutId, int itemId, string type);
         public ItemsVM GetItemsByHideoutId(int hideoutId);
     }

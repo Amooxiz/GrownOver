@@ -37,7 +37,6 @@ namespace GrownOver.Infrastructure.Services
                     Weight = inventory.weapon.Weight,
                     Damage = inventory.weapon.Damage,
                     Price = inventory.weapon.Price,
-                    Durability = inventory.weapon.Durability,
                     Loot = inventory.weapon.Loot,
                     Type = inventory.weapon.Type,
                 };
@@ -51,7 +50,6 @@ namespace GrownOver.Infrastructure.Services
                     Name = inventory.armor.Name,
                     Description = inventory.armor.Description,
                     Weight = inventory.armor.Weight,
-                    Durability = inventory.armor.Durability,
                     Price = inventory.armor.Price,
                     Resistance = inventory.armor.Resistance,
                     Loot = inventory.armor.Loot,
@@ -97,9 +95,9 @@ namespace GrownOver.Infrastructure.Services
             return _inventoryRepository.RemoveItem(inventoryId, type);
         }
 
-        public void AddItem(int inventoryId, int itemId, string type)
+        public dynamic AddItem(int inventoryId, int itemId, string type)
         {
-            _inventoryRepository.AddItem(inventoryId, itemId, type);
+            return _inventoryRepository.AddItem(inventoryId, itemId, type);
         }
     }
 }

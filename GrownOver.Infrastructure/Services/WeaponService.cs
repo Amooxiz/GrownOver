@@ -25,7 +25,6 @@ namespace GrownOver.Infrastructure.Services
                 Id = weapon.Id,
                 Name = weapon.Name,
                 Description = weapon.Description,
-                Durability = weapon.Durability,
                 Damage = weapon.Damage,
                 Price = weapon.Price,
                 Weight = weapon.Weight,

@@ -11,6 +11,6 @@ namespace GrownOver.Application.Interfaces
     {
         public Task<InventoryVM> GetInventoryById(int id);
         public dynamic RemoveItem(int inventoryId, string type);
-        public void AddItem(int inventoryId, int itemId, string type);
+        public dynamic AddItem(int inventoryId, int itemId, string type);
     }
 }

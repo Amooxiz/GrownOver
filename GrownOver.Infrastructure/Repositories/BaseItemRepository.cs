@@ -1,6 +1,5 @@
 ﻿using GrownOver.Application.Interfaces;
 using GrownOver.Application.ViewModels;
-using GrownOver.Contracts.RequestsModels;
 using GrownOver.Domain.Models;
 using GrownOver.Infrastructure.Data;
 using System;
@@ -35,7 +34,6 @@ namespace GrownOver.Infrastructure.Repositories
                 ArmorVM armorVM = new ArmorVM()
                 {
                     Description = item.Description,
-                    Durability = item.Durability,
                     Id = item.Id,
                     Name = item.Name,
                     Price = item.Price,
@@ -52,7 +50,6 @@ namespace GrownOver.Infrastructure.Repositories
                 WeaponVM weaponVM = new WeaponVM()
                 {
                     Description = item.Description,
-                    Durability = item.Durability,
                     Id = item.Id,
                     Name = item.Name,
                     Price = item.Price,
@@ -99,28 +96,32 @@ namespace GrownOver.Infrastructure.Repositories
             return itemsVM;
         }
 
-        public void AddWeapon(Weapon weapon)
+        public Weapon AddWeapon(Weapon weapon)
         {
             _context.Weapons.Add(weapon);
             _context.SaveChanges();
+            return weapon;
         }
 
-        public void AddArmor(Armor armor)
+        public Armor AddArmor(Armor armor)
         {
             _context.Armors.Add(armor);
             _context.SaveChanges();
+            return armor;
         }
 
-        public void AddMaterial(Material material)
+        public Material AddMaterial(Material material)
         {
             _context.Materials.Add(material);
             _context.SaveChanges();
+            return material;
         }
 
-        public void AddFood(Food food)
+        public Food AddFood(Food food)
         {
             _context.Foods.Add(food);
             _context.SaveChanges();
+            return food;
         }
 
         public dynamic GetItem(int id, string type)
