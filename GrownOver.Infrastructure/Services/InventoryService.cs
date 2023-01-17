@@ -95,7 +95,7 @@ namespace GrownOver.Infrastructure.Services
         {
             BaseItem item = _inventoryRepository.RemoveItem(inventoryId, type);
 
-            switch (item.Type)
+            switch (type)
             {
                 case "weapon":
                     Weapon weapon = (Weapon)item;
@@ -162,7 +162,7 @@ namespace GrownOver.Infrastructure.Services
         {
             BaseItem item = _inventoryRepository.AddItem(inventoryId, itemId, type);
 
-            switch (item.Type)
+            switch (type)
             {
                 case "weapon":
                     Weapon weapon = (Weapon)item;
